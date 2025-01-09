@@ -64,6 +64,7 @@ class Notation {
 // init (alphabetical order)
 const bat = new Notation("bat", ["", ""], "rem", "");
 const c = new Notation("c", ["/**", " */"], "", " *");
+const cmake = new Notation("cmake", ["", ""], "#", "");
 const cpp = new Notation("cpp", ["/**", " */"], "//", " *");
 const csharp = new Notation("csharp", ["/**", " */"], "//", " *");
 const css = new Notation("css", ["/**", " */"], "", " *");
@@ -93,6 +94,7 @@ const terraform = new Notation("terraform", ["/**", " */"], "#", " *");
 const typescript = new Notation("typescript", ["/**", " */"], "//", " *");
 const scss = new Notation("scss", ["/**", " */"], "//", " *");
 const shellscript = new Notation("shellscript", ["", ""], "#", "");
+const sql = new Notation("sql", ["", ""], "--", "");
 const starlark = new Notation("starlark", ["", ""], "#", "");
 const swift = new Notation("swift", ["/**", " */"], "//", " *");
 const xml = new Notation("xml", ["<!--", "-->"], "", "");
@@ -121,6 +123,7 @@ export const notations: { [key: string]: Notation } = {
     "bat": bat,
     "c": c,
     "clojure": lisp,
+    "cmake": cmake,
     "cpp": cpp,
     "csharp": csharp,
     "css": css,
@@ -153,6 +156,7 @@ export const notations: { [key: string]: Notation } = {
     "sass": scss,
     "scss": scss,
     "shellscript": shellscript,
+    "sql": sql,
     "starlark": starlark,
     "svelte": html,
     "swift": swift,

@@ -3,7 +3,7 @@
     "displayName": "licenser",
     "description": "inserts license header in source files and creates license file.",
     "icon": "image/logo.png",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "publisher": "ymotongpoo",
     "galleryBanner": {
         "color": "#EEF7FF",
@@ -19,7 +19,7 @@
         "url": "https://github.com/ymotongpoo/vsc-licenser/issues"
     },
     "engines": {
-        "vscode": "^1.55.0"
+        "vscode": "^1.87.0"
     },
     "categories": [
         "Other",
@@ -187,6 +187,7 @@
                         "BSD3",
                         "BSL1",
                         "BUSL-1.1",
+                        "EUPL-1.2",
                         "GPLv2",
                         "GPLv3",
                         "LGPLv3",
@@ -211,7 +212,7 @@
                         "Choose from list",
                         "Custom"
                     ],
-                    "description": "License setting for workspace. Available licenses are 'AGPLv3', 'AL2', '0BSD', 'BSD2', 'BSD3', 'GPLv2', 'GPLv3', 'LGPLv3', 'MIT', 'MPLv2', 'CC-BY-3', 'CC-BY-SA-3', 'CC-BY-ND-3', 'CC-BY-NC-3', 'CC-BY-NC-SA-3', 'CC-BY-NC-ND-3', 'CC-BY-4', 'CC-BY-SA-4', 'CC-BY-ND-4', 'CC-BY-NC-4', 'CC-BY-NC-SA-4', 'CC-BY-NC-ND-4', 'CC0-1', 'UNL', 'WTFPL', 'zlib'"
+                    "description": "License setting for workspace. Available licenses are 'AGPLv3', 'AL2', '0BSD', 'BSD2', 'BSD3', 'BSL1', 'BUSL-1.1', 'EUPL-1.2', 'GPLv2', 'GPLv3', 'LGPLv3', 'MIT', 'MPLv2', 'CC-BY-3', 'CC-BY-SA-3', 'CC-BY-ND-3', 'CC-BY-NC-3', 'CC-BY-NC-SA-3', 'CC-BY-NC-ND-3', 'CC-BY-4', 'CC-BY-SA-4', 'CC-BY-ND-4', 'CC-BY-NC-4', 'CC-BY-NC-SA-4', 'CC-BY-NC-ND-4', 'CC0-1', 'UNL', 'WTFPL', 'zlib'"
                 },
                 "licenser.author": {
                     "type": "string",
@@ -267,6 +268,11 @@
                     "type": "boolean",
                     "default": false,
                     "description": "Disable auto save after an operation (defaults to false)."
+                },
+                "licenser.excludeFileExtensions": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Exclude files from having a license automatically inserted based on file extension."
                 }
             }
         },
