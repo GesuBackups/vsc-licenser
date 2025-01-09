@@ -25,6 +25,7 @@ import { BSD3 } from "./licenses/bsd3";
 import { BSD2 } from "./licenses/bsd2";
 import { BSL1 } from "./licenses/bsl1";
 import { BUSL11 } from "./licenses/busl1_1";
+import { EUPL12 } from "./licenses/eupl12";
 import { GPLv2 } from "./licenses/gplv2";
 import { GPLv3 } from "./licenses/gplv3";
 import { LGPLv3 } from "./licenses/lgplv3";
@@ -82,6 +83,7 @@ const availableLicenses: Map<string, LicenseInfo> = new Map<string, LicenseInfo>
     ["BSD2", { displayName: "BSD2", creatorFn: (author, _) => new BSD2(author) }],
     ["BSL1", { displayName: "BSL1", creatorFn: (author, _) => new BSL1(author) }],
     ["BUSL-1.1", { displayName: "BUSL-1.1", creatorFn: (author, _) => new BUSL11(author) }],
+    ["EUPL-1.2", { displayName: "EUPL-1.2", creatorFn: (author, _) => new EUPL12(author)}],
     ["GPLV2", { displayName: "GPLv2", creatorFn: (author, projectName) => new GPLv2(author, projectName) }],
     ["GPLV3", { displayName: "GPLv3", creatorFn: (author, projectName) => new GPLv3(author, projectName) }],
     ["LGPLV3", { displayName: "LGPLv3", creatorFn: (author, projectName) => new LGPLv3(author, projectName) }],
@@ -323,7 +325,22 @@ class Licenser {
             if (autoInsertionDisabled) {
                 return;
             }
-            const fileName = path.win32.basename(e.document.fileName);
+
+            const fileName = path.basename(e.document.fileName);
+            if (fileName.includes(".") && !fileName.endsWith(".")) {
+                const fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length).toLocaleLowerCase();
+
+                let exludedFileExtensions = licenserSetting.get<string[]>("excludeFileExtensions");
+
+                const isInExcludedInList = exludedFileExtensions.some((e) => {
+                    return e.toLocaleLowerCase() === fileExtension
+                });
+
+                if (isInExcludedInList) {
+                    console.log("File: " + fileName + " exluded based on extension: " + fileExtension);
+                    return;
+                }
+            }
             if (fileName !== defaultLicenseFilename) {
                 const doc = e.document;
                 const contents = doc.getText();
